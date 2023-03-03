@@ -1,12 +1,20 @@
 <script lang="ts">
+	import Parlax from '../components/Parlax.svelte';
 	import '../index.css';
 </script>
 
 <div>
 	<span>
-		<h1>sushi</h1>
-		<p>Use functions from any language, in any language.</p>
+		<div id="parlax-wrapper">
+			<Parlax value="1"><h1>sushi</h1></Parlax>
+		</div>
 	</span>
+</div>
+
+<div id="parlax-wrapper">
+	<Parlax value="30">💻</Parlax>
+	<Parlax value="5">🔥</Parlax>
+	<Parlax value="-15">🍣</Parlax>
 </div>
 
 <style>
@@ -36,18 +44,20 @@
 		position: fixed;
 	}
 
-	h1,
-	p {
-		color: white;
-	}
-
 	h1 {
+		color: white;
 		font-weight: 800;
-		font-size: 3em;
+		font-size: 5em;
 	}
 
-	p {
-		margin-top: 10px;
-		white-space: pre-line;
+	#parlax-wrapper {
+		position: relative;
+		width: 100%;
+		height: 100vh;
+
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 </style>
