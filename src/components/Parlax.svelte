@@ -1,22 +1,21 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { get, writable, type Writable } from 'svelte/store';
+	import { writable, type Writable } from 'svelte/store';
 
 	export let value: string;
-	export const spanData: Writable<HTMLElement> = writable();
+	export const spanTransform: Writable<any> = writable();
 
-	onMount(() => {
+	onMount(async () => {
 		document.addEventListener('mousemove', (e) => {
-			const position: any = get(spanData).getAttribute('data-value');
-			const x = (window.innerWidth - e.pageX * position) / 90;
-			const y = (window.innerHeight - e.pageY * position) / 90;
+			const x = (window.innerWidth - e.pageX * value) / 90;
+			const y = (window.innerHeight - e.pageY * value) / 90;
 
-			get(spanData).style.transform = `translateX(${x}px) translateY(${y}px)`;
+			spanTransform.set(`translateX(${x}px) translateY(${y}px)`);
 		});
 	});
 </script>
 
-<span data-value={value} bind:this={$spanData}>
+<span style="transform: {$spanTransform}">
 	<p><slot /></p>
 </span>
 
