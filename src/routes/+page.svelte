@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Box from '../components/Box.svelte';
 	import Parlax from '../components/Parlax.svelte';
 	import Scroll from '../components/Scroll.svelte';
 	import '../index.css';
@@ -8,8 +9,13 @@
 <div>
 	<span>
 		<div id="parlax-wrapper">
-			<Parlax value="1"><h1 class:animation={$showAnimation} bind:this={$heading}>sushi</h1></Parlax
-			>
+			{#if $showAnimation == false}
+				<Parlax value="1"><h1 bind:this={$heading}>sushi</h1></Parlax>
+			{:else}
+				<Box>
+					<h1 class:animation={$showAnimation} bind:this={$heading}>sushi</h1>
+				</Box>
+			{/if}
 		</div>
 	</span>
 </div>
@@ -70,7 +76,7 @@
 		color: yellow;
 		animation: scroll-animation 1s;
 
-		font-size: 1em;
+		font-size: 2em;
 		margin-right: 500px;
 	}
 
@@ -82,7 +88,7 @@
 
 		100% {
 			margin-right: 500px;
-			font-size: 1em;
+			font-size: 2em;
 		}
 	}
 
