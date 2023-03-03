@@ -48,6 +48,12 @@
 		color: white;
 		font-weight: 800;
 		font-size: 5em;
+
+		background: -webkit-linear-gradient(#fa8072, #c9665b);
+
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
 	}
 
 	#parlax-wrapper {
