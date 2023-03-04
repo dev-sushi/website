@@ -11,9 +11,11 @@
 	<span>
 		<div id="parlax-wrapper">
 			{#if $showAnimation == false}
-				<Parlax value="1"><h1 bind:this={$heading}>sushi</h1></Parlax>
+				<section id="main-section">
+					<Parlax value="1"><h1 bind:this={$heading}>sushi</h1></Parlax>
 
-				<Divider />
+					<Divider />
+				</section>
 			{:else}
 				<Box>
 					<h1 class:animation={$showAnimation} bind:this={$heading}>
@@ -57,6 +59,22 @@
 		:root {
 			font-family: 'Inter var', sans-serif;
 		}
+	}
+
+	#main-section::before {
+		content: '';
+		position: absolute;
+
+		margin: 0 auto;
+		left: 0;
+		top: 0;
+
+		mask-image: radial-gradient(50% 60%, black 30%, transparent 90%);
+		filter: brightness(30%);
+
+		width: 100%;
+		height: 100%;
+		background: url('../img/grid.svg');
 	}
 
 	:global(body) {
