@@ -3,7 +3,7 @@
 	import Parlax from '../components/Parlax.svelte';
 	import Scroll from '../components/Scroll.svelte';
 	import '../index.css';
-	import { heading, showAnimation } from '../stores/app';
+	import { animationStep, heading, showAnimation } from '../stores/app';
 </script>
 
 <div>
@@ -13,8 +13,23 @@
 				<Parlax value="1"><h1 bind:this={$heading}>sushi</h1></Parlax>
 			{:else}
 				<Box>
-					<h1 class:animation={$showAnimation} bind:this={$heading}>sushi</h1>
+					<h1 class:animation={$showAnimation} bind:this={$heading}>
+						<span style="color: yellow;">sushi</span> saving indexed functlions
+					</h1>
+
+					{#if $animationStep == 1}
+						<p>Hello from Ruby!</p>
+					{/if}
 				</Box>
+
+				<span>
+					<p id="box-hint">Sushi is a library...</p>
+					<br />
+
+					{#if $animationStep == 1}
+						<p id="box-hint">That allows you to run functions <br /> from any language</p>
+					{/if}
+				</span>
 			{/if}
 		</div>
 	</span>
@@ -58,6 +73,14 @@
 		position: fixed;
 	}
 
+	#box-hint {
+		color: white;
+		font-weight: 700;
+
+		margin-left: 15px;
+		font-size: 2em;
+	}
+
 	h1 {
 		color: white;
 		font-weight: 800;
@@ -73,11 +96,12 @@
 	}
 
 	.animation {
-		color: yellow;
 		animation: scroll-animation 1s;
 
 		font-size: 2em;
 		margin-right: 500px;
+
+		width: 100vh;
 	}
 
 	@keyframes scroll-animation {
