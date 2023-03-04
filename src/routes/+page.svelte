@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Box from '../components/Box.svelte';
+	import Divider from '../components/Divider.svelte';
 	import Parlax from '../components/Parlax.svelte';
 	import Scroll from '../components/Scroll.svelte';
 	import '../index.css';
@@ -11,10 +12,12 @@
 		<div id="parlax-wrapper">
 			{#if $showAnimation == false}
 				<Parlax value="1"><h1 bind:this={$heading}>sushi</h1></Parlax>
+
+				<Divider />
 			{:else}
 				<Box>
 					<h1 class:animation={$showAnimation} bind:this={$heading}>
-						<span style="color: yellow;">sushi</span> saving indexed functlions
+						<span style="color: yellow;">sushi</span> saving indexed functions
 					</h1>
 
 					{#if $animationStep == 1}
@@ -64,6 +67,10 @@
 		height: 200vh;
 	}
 
+	span {
+		width: 100vw;
+	}
+
 	div {
 		width: 100%;
 		height: 100%;
@@ -96,24 +103,10 @@
 	}
 
 	.animation {
-		animation: scroll-animation 1s;
-
 		font-size: 2em;
 		margin-right: 500px;
 
 		width: 100vh;
-	}
-
-	@keyframes scroll-animation {
-		0% {
-			font-size: 5em;
-			margin-right: 0px;
-		}
-
-		100% {
-			margin-right: 500px;
-			font-size: 2em;
-		}
 	}
 
 	#parlax-wrapper {

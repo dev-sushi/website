@@ -11,5 +11,21 @@
 		border: 15px ridge salmon;
 
 		background-color: #1f1f1f;
+		animation: show 1s;
+
+		position: absolute;
+		right: 20vw;
+	}
+
+	@keyframes show {
+		0% {
+			transform: rotate(-30deg);
+			right: 100vw;
+		}
+
+		100% {
+			transform: rotate(0deg);
+			right: 20vw;
+		}
 	}
 </style>

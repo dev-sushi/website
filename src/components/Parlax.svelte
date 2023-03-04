@@ -24,4 +24,8 @@
 		font-size: 3em;
 		filter: grayscale(30%);
 	}
+
+	span {
+		width: 100vw;
+	}
 </style>
