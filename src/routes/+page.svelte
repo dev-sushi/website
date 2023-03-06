@@ -10,32 +10,31 @@
 <div>
 	<span>
 		<div id="parlax-wrapper">
-			{#if $showAnimation == false}
-				<section id="main-section">
+			<section id="main-section">
+				{#if $showAnimation == false}
 					<Parlax value="1"><h1 bind:this={$heading}>sushi</h1></Parlax>
+				{:else}
+					<Box>
+						<h1 class:animation={$showAnimation} bind:this={$heading}>
+							<span style="color: yellow;">sushi</span> saving indexed functions
+						</h1>
 
-					<Divider />
-				</section>
-			{:else}
-				<Box>
-					<h1 class:animation={$showAnimation} bind:this={$heading}>
-						<span style="color: yellow;">sushi</span> saving indexed functions
-					</h1>
+						{#if $animationStep == 1}
+							<p>Hello from Ruby!</p>
+						{/if}
+					</Box>
 
-					{#if $animationStep == 1}
-						<p>Hello from Ruby!</p>
-					{/if}
-				</Box>
+					<span>
+						<p id="box-hint">Sushi is a library...</p>
+						<br />
 
-				<span>
-					<p id="box-hint">Sushi is a library...</p>
-					<br />
-
-					{#if $animationStep == 1}
-						<p id="box-hint">That allows you to run functions <br /> from any language</p>
-					{/if}
-				</span>
-			{/if}
+						{#if $animationStep == 1}
+							<p id="box-hint">That allows you to run functions <br /> from any language</p>
+						{/if}
+					</span>
+				{/if}
+				<Divider />
+			</section>
 		</div>
 	</span>
 </div>
@@ -82,7 +81,7 @@
 		background-color: #121212;
 
 		overflow-y: auto;
-		height: 200vh;
+		height: 400vh;
 	}
 
 	span {

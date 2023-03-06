@@ -6,7 +6,7 @@
 	let scrollY: number;
 
 	beforeUpdate(() => {
-		if (scrollY >= 510) {
+		if (scrollY >= 600) {
 			showAnimation.set(true);
 
 			setTimeout(() => {
