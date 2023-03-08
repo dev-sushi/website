@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { beforeUpdate } from 'svelte';
-	import { get } from 'svelte/store';
-	import { animationStep, heading, showAnimation } from '../stores/app';
+	import { animationStep, showAnimation } from '../stores/app';
 
 	let scrollY: number;
 
@@ -14,7 +13,6 @@
 			}, 1000);
 		} else if (scrollY < 510) {
 			showAnimation.set(false);
-			get(heading).innerHTML = `sushi`;
 		}
 	});
 </script>

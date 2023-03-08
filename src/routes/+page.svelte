@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Box from '../components/Box.svelte';
 	import Divider from '../components/Divider.svelte';
+	import Terminal from '../components/fake-terminal/Terminal.svelte';
 	import Parlax from '../components/Parlax.svelte';
 	import Scroll from '../components/Scroll.svelte';
 	import '../index.css';
@@ -15,13 +16,7 @@
 					<Parlax value="1"><h1 bind:this={$heading}>sushi</h1></Parlax>
 				{:else}
 					<Box>
-						<h1 class:animation={$showAnimation} bind:this={$heading}>
-							<span style="color: yellow;">sushi</span> saving indexed functions
-						</h1>
-
-						{#if $animationStep == 1}
-							<p>Hello from Ruby!</p>
-						{/if}
+						<Terminal text={[{ content: 'hello world', ms: 2000 }]} />
 					</Box>
 
 					<span>
