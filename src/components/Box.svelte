@@ -15,6 +15,8 @@
 
 		position: absolute;
 		right: 20vw;
+
+		top: 18vw;
 	}
 
 	@keyframes show {

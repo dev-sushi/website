@@ -19,7 +19,7 @@
 						<Terminal text={terminalText} />
 					</Box>
 
-					<span>
+					<span id="text">
 						<p id="box-hint">Sushi is a library...</p>
 						<br />
 
@@ -81,6 +81,12 @@
 
 	span {
 		width: 100vw;
+	}
+
+	#text {
+		margin-left: 60vw;
+		z-index: 500;
+		position: relative;
 	}
 
 	div {
