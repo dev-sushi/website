@@ -1,7 +1,7 @@
 <script lang="ts">
+	import Typewriter from 'svelte-typewriter';
 	import type { TerminalText } from '../../types/terminal';
 	import Text from './Text.svelte';
-
 	export let text: TerminalText[];
 
 	function createText(content: string, ms: number) {
@@ -22,10 +22,18 @@
 	}
 </script>
 
-{#each text as { content, ms }}
+{#each text as { content, ms, typewriter }}
 	{#await createText(content, ms)}
 		<p />
 	{:then c}
-		{@html c}
+		{#if typewriter}
+			<Typewriter cursor={false} interval={50}>
+				<p>{@html c}</p>
+			</Typewriter>
+		{:else if content == '&nbsp;'}
+			<p>&nbsp;</p>
+		{:else}
+			{@html c}
+		{/if}
 	{/await}
 {/each}

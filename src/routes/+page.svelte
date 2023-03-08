@@ -5,7 +5,7 @@
 	import Parlax from '../components/Parlax.svelte';
 	import Scroll from '../components/Scroll.svelte';
 	import '../index.css';
-	import { animationStep, heading, showAnimation } from '../stores/app';
+	import { animationStep, heading, showAnimation, terminalText } from '../stores/app';
 </script>
 
 <div>
@@ -16,12 +16,7 @@
 					<Parlax value="1"><h1 bind:this={$heading}>sushi</h1></Parlax>
 				{:else}
 					<Box>
-						<Terminal
-							text={[
-								{ content: 'python app.py', ms: 1 },
-								{ content: 'sushi saving indexed functions', ms: 500 }
-							]}
-						/>
+						<Terminal text={terminalText} />
 					</Box>
 
 					<span>
