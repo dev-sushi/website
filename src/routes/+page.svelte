@@ -16,7 +16,12 @@
 					<Parlax value="1"><h1 bind:this={$heading}>sushi</h1></Parlax>
 				{:else}
 					<Box>
-						<Terminal text={[{ content: 'hello world', ms: 2000 }]} />
+						<Terminal
+							text={[
+								{ content: 'python app.py', ms: 1 },
+								{ content: 'sushi saving indexed functions', ms: 500 }
+							]}
+						/>
 					</Box>
 
 					<span>

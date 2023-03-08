@@ -1,24 +1,31 @@
 <script lang="ts">
-	import { get, writable, type Writable } from 'svelte/store';
 	import type { TerminalText } from '../../types/terminal';
 	import Text from './Text.svelte';
 
-	export let text: [TerminalText] = [{ content: ' ', ms: 0 }];
-	const component: Writable<HTMLElement> = writable();
+	export let text: TerminalText[];
+
+	function createText(content: string, ms: number) {
+		const div = document.createElement('div');
+
+		return new Promise((resolve) => {
+			setTimeout(() => {
+				new Text({
+					props: {
+						content: content
+					},
+					target: div
+				});
+
+				resolve(div.outerHTML);
+			}, ms);
+		});
+	}
 </script>
 
 {#each text as { content, ms }}
-	{(() => {
-		setTimeout(() => {
-			get(component).style.display = 'block';
-		}, ms);
-
-		return '';
-	})()}
-
-	<div bind:this={$component} style="display: none;">
-		<Text>
-			{content}
-		</Text>
-	</div>
+	{#await createText(content, ms)}
+		<p />
+	{:then c}
+		{@html c}
+	{/await}
 {/each}
